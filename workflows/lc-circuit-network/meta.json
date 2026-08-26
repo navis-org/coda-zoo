@@ -1,0 +1,19 @@
+{
+  "name": "LC circuit network",
+  "summary": "Type-level connectivity as a node-link diagram, laid out feed-forward.",
+  "tags": [
+    "connectivity",
+    "network",
+    "optic-lobe",
+    "no-token"
+  ],
+  "authors": [
+    {
+      "name": "Coda",
+      "github": "navis-org"
+    }
+  ],
+  "requires": [
+    "mock"
+  ]
+}

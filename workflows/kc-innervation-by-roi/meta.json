@@ -1,0 +1,19 @@
+{
+  "name": "Kenyon cell innervation by ROI",
+  "summary": "Per-ROI postsynapse counts for KC types, as a stacked bar chart.",
+  "tags": [
+    "rois",
+    "bar-chart",
+    "hemibrain",
+    "no-token"
+  ],
+  "authors": [
+    {
+      "name": "Coda",
+      "github": "navis-org"
+    }
+  ],
+  "requires": [
+    "mock"
+  ]
+}

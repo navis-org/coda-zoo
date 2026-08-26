@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "updatedAt": "",
+  "repo": "navis-org/coda-zoo",
+  "ref": "main",
+  "workflows": [
+    {
+      "slug": "kc-innervation-by-roi",
+      "name": "Kenyon cell innervation by ROI",
+      "summary": "Per-ROI postsynapse counts for KC types, as a stacked bar chart.",
+      "tags": ["rois", "bar-chart", "hemibrain", "no-token"],
+      "authors": [
+        {
+          "name": "Coda",
+          "github": "navis-org"
+        }
+      ],
+      "requires": ["mock"],
+      "graph": "workflows/kc-innervation-by-roi/graph.coda.json",
+      "readme": "workflows/kc-innervation-by-roi/README.md",
+      "nodeCount": 8,
+      "layout": {
+        "nodes": [
+          [60, 80, "dataset.mock.hemibrain"],
+          [476, 80, "neuron.findNeurons"],
+          [892, 80, "neuron.roiCounts"],
+          [1308, 80, "core.groupBy"],
+          [1724, 80, "out.barChart"],
+          [60, -170, "note.text"],
+          [892, 430, "note.text"],
+          [1724, 430, "note.text"]
+        ],
+        "edges": [
+          [0, 1],
+          [0, 2],
+          [1, 2],
+          [2, 3],
+          [3, 4]
+        ]
+      },
+      "updatedAt": ""
+    },
+    {
+      "slug": "lc-circuit-network",
+      "name": "LC circuit network",
+      "summary": "Type-level connectivity as a node-link diagram, laid out feed-forward.",
+      "tags": ["connectivity", "network", "optic-lobe", "no-token"],
+      "authors": [
+        {
+          "name": "Coda",
+          "github": "navis-org"
+        }
+      ],
+      "requires": ["mock"],
+      "graph": "workflows/lc-circuit-network/graph.coda.json",
+      "readme": "workflows/lc-circuit-network/README.md",
+      "nodeCount": 9,
+      "layout": {
+        "nodes": [
+          [60, 80, "dataset.mock.opticlobe"],
+          [476, 80, "neuron.findNeurons"],
+          [892, 80, "neuron.connectivity"],
+          [1308, 80, "core.groupBy"],
+          [1724, 80, "net.build"],
+          [2140, 80, "out.network"],
+          [60, -180, "note.text"],
+          [892, 430, "note.text"],
+          [1724, 430, "note.text"]
+        ],
+        "edges": [
+          [0, 1],
+          [0, 2],
+          [1, 2],
+          [2, 3],
+          [3, 4],
+          [4, 5]
+        ]
+      },
+      "updatedAt": ""
+    },
+    {
+      "slug": "lc4-morphology-3d",
+      "name": "LC4 morphology in 3D",
+      "summary": "Skeletons and synapse locations in 3D, coloured by type and polarity.",
+      "tags": ["morphology", "3d", "synapses", "optic-lobe", "no-token"],
+      "authors": [
+        {
+          "name": "Coda",
+          "github": "navis-org"
+        }
+      ],
+      "requires": ["mock"],
+      "graph": "workflows/lc4-morphology-3d/graph.coda.json",
+      "readme": "workflows/lc4-morphology-3d/README.md",
+      "nodeCount": 8,
+      "layout": {
+        "nodes": [
+          [60, 175, "dataset.mock.opticlobe"],
+          [476, 175, "neuron.findNeurons"],
+          [892, 80, "neuron.skeletons"],
+          [892, 289, "neuron.synapses"],
+          [1308, 175, "out.viewer3d"],
+          [60, -180, "note.text"],
+          [476, 620, "note.text"],
+          [1308, 620, "note.text"]
+        ],
+        "edges": [
+          [0, 1],
+          [0, 2],
+          [0, 3],
+          [1, 2],
+          [1, 3],
+          [2, 4],
+          [3, 4]
+        ]
+      },
+      "updatedAt": ""
+    }
+  ]
+}

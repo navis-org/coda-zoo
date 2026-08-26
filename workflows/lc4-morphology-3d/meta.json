@@ -1,0 +1,20 @@
+{
+  "name": "LC4 morphology in 3D",
+  "summary": "Skeletons and synapse locations in 3D, coloured by type and polarity.",
+  "tags": [
+    "morphology",
+    "3d",
+    "synapses",
+    "optic-lobe",
+    "no-token"
+  ],
+  "authors": [
+    {
+      "name": "Coda",
+      "github": "navis-org"
+    }
+  ],
+  "requires": [
+    "mock"
+  ]
+}
