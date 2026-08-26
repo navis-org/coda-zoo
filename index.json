@@ -1,8 +1,6 @@
 {
   "version": 1,
   "updatedAt": "2026-08-26T16:07:58+01:00",
-  "repo": "navis-org/coda-zoo",
-  "ref": "main",
   "workflows": [
     {
       "slug": "kc-innervation-by-roi",
