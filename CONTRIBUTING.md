@@ -54,9 +54,12 @@ Three headings work well: *What it does*, *Why the steps are where they are*, an
 The middle one is the part that is worth your time — a graph shows what it computes and says
 nothing about why.
 
-## 3. Regenerate the index
+## 3. You do not need to regenerate the index
 
-`index.json` is generated. You need a checkout of Coda beside this one:
+`index.json` is generated, and CI regenerates and commits it after your pull request merges. It
+is not something to hand-edit, and a stale one in your branch is not a problem.
+
+If you want to see what CI will say before pushing, you need a checkout of Coda beside this one:
 
 ```bash
 git clone https://github.com/navis-org/coda
@@ -64,11 +67,10 @@ cd coda && pnpm install
 pnpm zoo:index ../coda-zoo
 ```
 
-It validates every entry against Coda's node registry and rewrites `index.json`. Errors fail the
-build and have to be fixed; warnings ship. Commit the regenerated `index.json` with your entry.
-
-If you would rather not install Coda, open the pull request without it — CI will tell you
-exactly what the index should contain, and a maintainer can regenerate it.
+That validates every entry against Coda's node registry and rewrites `index.json`. Errors have
+to be fixed; warnings ship. `--check` additionally compares against the committed file — useful
+locally, but note it will disagree by one commit date immediately after you commit an entry,
+which is exactly why CI does the regeneration rather than asking you to.
 
 ## 4. Open a pull request
 

@@ -12,5 +12,4 @@
 - [ ] `requires` lists the sources the graph actually uses
 - [ ] The README says *why* the steps are in that order, not only what they are
 - [ ] No internal server URLs, and no neuron-id dumps that pin it to one dataset version
-- [ ] `index.json` regenerated (`pnpm zoo:index ../coda-zoo` from a Coda checkout), or you would
-      like a maintainer to do it
+<!-- index.json is CI's job. You do not need to touch it. -->

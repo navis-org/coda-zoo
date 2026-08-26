@@ -1,19 +1,27 @@
-# Validate every deposited workflow, and keep index.json honest.
+# Validate every deposited workflow, and keep index.json current.
 #
-# The check runs inside a checkout of Coda rather than here, because every question worth
+# The checks run inside a checkout of Coda rather than here, because every question worth
 # asking about a deposited graph needs Coda's node registry: whether `out.network` still
 # exists, whether a param survived a rename, whether the declared `requires` matches the
 # dataset nodes actually in the graph. A validator that only sees JSON can check that the
 # braces balance, and the failure it misses is the one this repository has — a workflow
 # deposited last year that opens today with a node silently dropped out of the middle of it.
 #
+# **CI regenerates index.json; a contributor does not have to.** That is not politeness, it is
+# the only arrangement that terminates. An entry's `updatedAt` is the date of the commit that
+# touched its directory, so an index committed *alongside* a change always carries the previous
+# date — and a byte-comparison against a freshly generated one fails on the commit that was
+# supposed to fix it. Generating after the push instead converges in one round, and the commit
+# is made with GITHUB_TOKEN, whose pushes deliberately do not trigger workflows. That is what
+# stops the loop.
+#
 # Three triggers, and the third is the point:
 #
-#   pull_request — you changed a workflow and did not regenerate index.json.
-#   push         — the same, as a backstop for anything that lands without a PR.
-#   schedule     — nothing here changed, and Coda moved underneath it. This is the drift
-#                  alarm, and it is the only one that fires on the failure nobody is looking
-#                  for. A red build here means a card in the browser now opens onto a hole.
+#   pull_request — validate the entries in the PR. Errors fail; nothing is written back.
+#   push         — validate, regenerate, and commit the index if it moved.
+#   schedule     — nothing here changed, and Coda moved underneath it. This is the drift alarm,
+#                  and the only trigger that fires on the failure nobody is watching for. A red
+#                  build here means a card in the browser now opens onto a hole.
 name: Validate workflows
 
 on:
@@ -26,13 +34,20 @@ on:
     - cron: '0 6 * * 1'
   workflow_dispatch:
 
+# A queued regeneration behind a running one would race on the same file. One at a time, and
+# never cancelled mid-push: a half-updated index is worse than a queued run.
+concurrency:
+  group: validate
+  cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # Full history: index.json carries each entry's last-commit date, and a shallow clone
-      # makes every one of them empty — which then differs from the committed file and fails
-      # the check for a reason that has nothing to do with the change under review.
+      # makes every one of them empty.
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -56,5 +71,21 @@ jobs:
       - run: pnpm install --frozen-lockfile
         working-directory: coda
 
-      - run: pnpm zoo:index ../zoo --check
+      # Validates every entry and rewrites index.json. A non-zero exit is an entry that would
+      # arrive broken, and it fails the build whichever trigger this is.
+      - run: pnpm zoo:index ../zoo
         working-directory: coda
+
+      - name: Commit the regenerated index
+        if: github.event_name != 'pull_request'
+        working-directory: zoo
+        run: |
+          if git diff --quiet -- index.json; then
+            echo "index.json is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git commit -m "regenerate index.json"
+          git push

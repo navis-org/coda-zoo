@@ -27,7 +27,7 @@ workflows/
     README.md           what it does, why the steps are in that order
 ```
 
-then regenerate `index.json` and open a pull request.
+then open a pull request. `index.json` is generated — CI regenerates and commits it.
 
 ## How it reaches the app
 
