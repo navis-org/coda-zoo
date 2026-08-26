@@ -8,7 +8,7 @@
       "slug": "kc-innervation-by-roi",
       "name": "Kenyon cell innervation by ROI",
       "summary": "Per-ROI postsynapse counts for KC types, as a stacked bar chart.",
-      "tags": ["rois", "bar-chart", "hemibrain", "no-token"],
+      "tags": ["rois", "bar-chart", "hemibrain"],
       "authors": [
         {
           "name": "Coda",
@@ -44,7 +44,7 @@
       "slug": "lc-circuit-network",
       "name": "LC circuit network",
       "summary": "Type-level connectivity as a node-link diagram, laid out feed-forward.",
-      "tags": ["connectivity", "network", "optic-lobe", "no-token"],
+      "tags": ["connectivity", "network", "optic-lobe"],
       "authors": [
         {
           "name": "Coda",
@@ -82,7 +82,7 @@
       "slug": "lc4-morphology-3d",
       "name": "LC4 morphology in 3D",
       "summary": "Skeletons and synapse locations in 3D, coloured by type and polarity.",
-      "tags": ["morphology", "3d", "synapses", "optic-lobe", "no-token"],
+      "tags": ["morphology", "3d", "synapses", "optic-lobe"],
       "authors": [
         {
           "name": "Coda",
