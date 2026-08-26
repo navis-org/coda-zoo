@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "",
+  "updatedAt": "2026-08-26T15:48:59+01:00",
   "repo": "navis-org/coda-zoo",
   "ref": "main",
   "workflows": [
@@ -38,7 +38,7 @@
           [3, 4]
         ]
       },
-      "updatedAt": ""
+      "updatedAt": "2026-08-26T15:48:59+01:00"
     },
     {
       "slug": "lc-circuit-network",
@@ -76,7 +76,7 @@
           [4, 5]
         ]
       },
-      "updatedAt": ""
+      "updatedAt": "2026-08-26T15:48:59+01:00"
     },
     {
       "slug": "lc4-morphology-3d",
@@ -114,7 +114,7 @@
           [3, 4]
         ]
       },
-      "updatedAt": ""
+      "updatedAt": "2026-08-26T15:48:59+01:00"
     }
   ]
 }
