@@ -1,118 +1,160 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-26T16:07:58+01:00",
+  "updatedAt": "",
   "workflows": [
     {
-      "slug": "kc-innervation-by-roi",
-      "name": "Kenyon cell innervation by ROI",
-      "summary": "Per-ROI postsynapse counts for KC types, as a stacked bar chart.",
-      "tags": ["rois", "bar-chart", "hemibrain"],
+      "slug": "flywire-fafb-annotations",
+      "name": "FlyWire FAFB Full Stack",
+      "summary": "Full-stack analysis pipeline for the public release (v783) of FlyWire FAFB.",
+      "tags": ["fly", "brain", "flywire", "fafb", "annotations"],
       "authors": [
         {
-          "name": "Coda",
-          "github": "navis-org"
+          "name": "Philipp Schlegel",
+          "github": "schlegelp"
         }
       ],
-      "requires": ["mock"],
-      "graph": "workflows/kc-innervation-by-roi/graph.coda.json",
-      "readme": "workflows/kc-innervation-by-roi/README.md",
-      "nodeCount": 8,
+      "requires": ["cave"],
+      "graph": "workflows/flywire-fafb-annotations/graph.coda.json",
+      "readme": "workflows/flywire-fafb-annotations/README.md",
+      "nodeCount": 15,
       "layout": {
         "nodes": [
-          [60, 80, "dataset.mock.hemibrain"],
-          [476, 80, "neuron.findNeurons"],
-          [892, 80, "neuron.roiCounts"],
-          [1308, 80, "core.groupBy"],
-          [1724, 80, "out.barChart"],
-          [60, -170, "note.text"],
-          [892, 430, "note.text"],
-          [1724, 430, "note.text"]
+          [-288, 0, "note.text"],
+          [0, 0, "core.tableFromUrl"],
+          [262, 0, "core.combineColumns"],
+          [530, 0, "cave.updateRootIds"],
+          [1070, 0, "neuron.explore"],
+          [1610, 0, "out.neuroglancer"],
+          [-238, 258, "note.text"],
+          [0, 200, "annotation.caveTable"],
+          [262, 200, "core.groupBy"],
+          [530, 200, "core.join"],
+          [790, 200, "dataset.flywire"],
+          [790, 506, "dataset.description"],
+          [1070, 505, "out.table"],
+          [1348, -167, "dataset.ngsource"],
+          [1349, -239, "note.text"]
         ],
         "edges": [
-          [0, 1],
-          [0, 2],
+          [10, 11],
           [1, 2],
           [2, 3],
-          [3, 4]
+          [7, 8],
+          [10, 3],
+          [10, 7],
+          [3, 9],
+          [8, 9],
+          [9, 10],
+          [10, 4],
+          [10, 5],
+          [4, 12],
+          [4, 5],
+          [13, 5]
         ]
       },
-      "updatedAt": "2026-08-26T16:07:58+01:00"
+      "updatedAt": ""
     },
     {
-      "slug": "lc-circuit-network",
-      "name": "LC circuit network",
-      "summary": "Type-level connectivity as a node-link diagram, laid out feed-forward.",
-      "tags": ["connectivity", "network", "optic-lobe"],
+      "slug": "malecns-chart-types",
+      "name": "All Chart Types",
+      "summary": "Demonstrates the various chart types available in Coda using MaleCNS data.",
+      "tags": ["fly", "charts", "malecns"],
       "authors": [
         {
-          "name": "Coda",
-          "github": "navis-org"
+          "name": "Philipp Schlegel",
+          "github": "schlegelp"
         }
       ],
-      "requires": ["mock"],
-      "graph": "workflows/lc-circuit-network/graph.coda.json",
-      "readme": "workflows/lc-circuit-network/README.md",
-      "nodeCount": 9,
+      "requires": ["neuprint"],
+      "graph": "workflows/malecns-chart-types/graph.coda.json",
+      "readme": "workflows/malecns-chart-types/README.md",
+      "nodeCount": 16,
       "layout": {
         "nodes": [
-          [60, 80, "dataset.mock.opticlobe"],
-          [476, 80, "neuron.findNeurons"],
-          [892, 80, "neuron.connectivity"],
-          [1308, 80, "core.groupBy"],
-          [1724, 80, "net.build"],
-          [2140, 80, "out.network"],
-          [60, -180, "note.text"],
-          [892, 430, "note.text"],
-          [1724, 430, "note.text"]
+          [70, 90, "dataset.malecns"],
+          [70, 390, "dataset.description"],
+          [738, 89, "out.table"],
+          [347, 89, "neuron.findNeurons"],
+          [1129, 89, "out.pie"],
+          [1127, 574, "out.histogram"],
+          [1574, 92, "out.distribution"],
+          [1133, 19, "note.text"],
+          [349, 18, "note.text"],
+          [1576, 17, "note.text"],
+          [1130, 1088, "note.text"],
+          [742, 16, "note.text"],
+          [737, 575, "out.barChart"],
+          [734, 1085, "note.text"],
+          [2087, 95, "out.scatter"],
+          [2089, 16, "note.text"]
         ],
         "edges": [
           [0, 1],
-          [0, 2],
+          [0, 3],
+          [3, 2],
+          [2, 4],
+          [2, 5],
+          [2, 6],
+          [2, 12],
+          [2, 14]
+        ]
+      },
+      "updatedAt": ""
+    },
+    {
+      "slug": "malecns-connectivity-similarity",
+      "name": "Connectivity Similarity",
+      "summary": "Shows how to calculate neuron connectivity similarity. Uses MaleCNS data.",
+      "tags": ["fly", "connectivity-similarity", "cosine-similarity", "clustering", "malecns"],
+      "authors": [
+        {
+          "name": "Philipp Schlegel",
+          "github": "schlegelp"
+        }
+      ],
+      "requires": ["neuprint"],
+      "graph": "workflows/malecns-connectivity-similarity/graph.coda.json",
+      "readme": "workflows/malecns-connectivity-similarity/README.md",
+      "nodeCount": 17,
+      "layout": {
+        "nodes": [
+          [9, 29, "dataset.malecns"],
+          [294, 29, "neuron.findNeurons"],
+          [690, 29, "neuron.connectivity"],
+          [959, 29, "neuron.partnerVectors"],
+          [1230, 29, "out.table"],
+          [1624, 29, "core.similarity"],
+          [2483, 510, "out.heatmap"],
+          [1946, 27, "cluster.linkage"],
+          [2483, 27, "out.dendrogram"],
+          [2215, 27, "cluster.cut"],
+          [3080, 27, "cluster.clustersToNeurons"],
+          [3090, 510, "out.neuroglancer"],
+          [3416, 27, "out.table"],
+          [295, 232, "note.text"],
+          [961, 434, "note.text"],
+          [1626, 286, "note.text"],
+          [1951, 221, "note.text"]
+        ],
+        "edges": [
+          [0, 1],
           [1, 2],
+          [0, 2],
           [2, 3],
           [3, 4],
-          [4, 5]
+          [4, 5],
+          [5, 7],
+          [7, 6],
+          [7, 9],
+          [9, 8],
+          [9, 10],
+          [1, 10],
+          [10, 12],
+          [12, 11],
+          [0, 11]
         ]
       },
-      "updatedAt": "2026-08-26T16:07:58+01:00"
-    },
-    {
-      "slug": "lc4-morphology-3d",
-      "name": "LC4 morphology in 3D",
-      "summary": "Skeletons and synapse locations in 3D, coloured by type and polarity.",
-      "tags": ["morphology", "3d", "synapses", "optic-lobe"],
-      "authors": [
-        {
-          "name": "Coda",
-          "github": "navis-org"
-        }
-      ],
-      "requires": ["mock"],
-      "graph": "workflows/lc4-morphology-3d/graph.coda.json",
-      "readme": "workflows/lc4-morphology-3d/README.md",
-      "nodeCount": 8,
-      "layout": {
-        "nodes": [
-          [60, 175, "dataset.mock.opticlobe"],
-          [476, 175, "neuron.findNeurons"],
-          [892, 80, "neuron.skeletons"],
-          [892, 289, "neuron.synapses"],
-          [1308, 175, "out.viewer3d"],
-          [60, -180, "note.text"],
-          [476, 620, "note.text"],
-          [1308, 620, "note.text"]
-        ],
-        "edges": [
-          [0, 1],
-          [0, 2],
-          [0, 3],
-          [1, 2],
-          [1, 3],
-          [2, 4],
-          [3, 4]
-        ]
-      },
-      "updatedAt": "2026-08-26T16:07:58+01:00"
+      "updatedAt": ""
     }
   ]
 }

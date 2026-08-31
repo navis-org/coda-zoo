@@ -1,0 +1,345 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "sourceNote",
+      "type": "note.text",
+      "position": {
+        "x": -288,
+        "y": 0
+      },
+      "params": {
+        "text": "Hierarchical annotations loaded from [github.com/flyconnectome/flywire_annotations](https://github.com/flyconnectome/flywire_annotations).\n\nInitial set of annotations reported in [Schlegel _et al._, Nature (2024)](https://doi.org/10.1038/s41586-024-07686-5). Now incorporates optic lobe annotations from [Matsliah _et al._, Nature (2024)](https://www.nature.com/articles/s41586-024-07981-1), and general updates from [Berg _et al._, Cell (2026)](https://www.biorxiv.org/content/10.1101/2025.10.09.680999v1).",
+        "outline": true
+      },
+      "size": {
+        "width": 280,
+        "height": 184
+      }
+    },
+    {
+      "id": "annotations",
+      "type": "core.tableFromUrl",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "params": {
+        "url": "https://raw.githubusercontent.com/flyconnectome/flywire_annotations/main/supplemental_files/Supplemental_file1_neuron_annotations.tsv",
+        "idColumn": "root_id",
+        "typeColumn": "",
+        "textColumns": [],
+        "refresh": 0
+      }
+    },
+    {
+      "id": "combine",
+      "type": "core.combineColumns",
+      "position": {
+        "x": 262,
+        "y": 0
+      },
+      "params": {
+        "columns": [
+          "cell_type",
+          "hemibrain_type"
+        ],
+        "into": "type",
+        "sourceColumn": ""
+      }
+    },
+    {
+      "id": "repair",
+      "type": "cave.updateRootIds",
+      "position": {
+        "x": 530,
+        "y": 0
+      },
+      "params": {
+        "idColumn": "neuronId",
+        "supervoxelColumn": "supervoxel_id",
+        "version": ""
+      }
+    },
+    {
+      "id": "explore",
+      "type": "neuron.explore",
+      "position": {
+        "x": 1070,
+        "y": 0
+      },
+      "params": {
+        "query": "",
+        "selection": [],
+        "chips": [],
+        "tagColumn": "join_tag",
+        "searchTags": true,
+        "page": 0,
+        "pageSize": 25,
+        "limit": 0,
+        "refresh": 0
+      }
+    },
+    {
+      "id": "ngl",
+      "type": "out.neuroglancer",
+      "position": {
+        "x": 1610,
+        "y": 0
+      },
+      "params": {
+        "segmentColorMode": "default",
+        "segmentColorBy": "type",
+        "segmentColor": "0",
+        "layout": "3d",
+        "layers": "all",
+        "uiScale": 0.75,
+        "showSlices": false,
+        "limit": 10000,
+        "viewer": "https://neuroglancer-demo.appspot.com/",
+        "viewerType": "auto"
+      },
+      "size": {
+        "width": 633,
+        "height": 839
+      }
+    },
+    {
+      "id": "tagsNote",
+      "type": "note.text",
+      "position": {
+        "x": -238,
+        "y": 258
+      },
+      "params": {
+        "text": "Community annotations are added as separate \"tags\" (as opposed to the more structured \"fields\").",
+        "outline": true
+      },
+      "size": {
+        "width": 230,
+        "height": 86
+      }
+    },
+    {
+      "id": "tags",
+      "type": "annotation.caveTable",
+      "position": {
+        "x": 0,
+        "y": 200
+      },
+      "params": {
+        "datastack": "",
+        "table": "neuron_information_v2",
+        "columns": "pt_root_id, tag",
+        "idColumn": "pt_root_id",
+        "pivotOn": "",
+        "valueColumn": ""
+      }
+    },
+    {
+      "id": "foldTags",
+      "type": "core.groupBy",
+      "position": {
+        "x": 262,
+        "y": 200
+      },
+      "params": {
+        "by": [
+          "neuronId"
+        ],
+        "agg": "join",
+        "value": "tag"
+      }
+    },
+    {
+      "id": "join",
+      "type": "core.join",
+      "position": {
+        "x": 530,
+        "y": 200
+      },
+      "params": {
+        "leftKey": "neuronId",
+        "rightKey": "",
+        "how": "left",
+        "suffix": "_r"
+      }
+    },
+    {
+      "id": "dataset",
+      "type": "dataset.flywire",
+      "position": {
+        "x": 790,
+        "y": 200
+      },
+      "params": {
+        "version": "",
+        "refresh": 0,
+        "edgeSetId": "",
+        "edgeSetName": ""
+      }
+    },
+    {
+      "id": "n1t_4n1m5",
+      "type": "dataset.description",
+      "position": {
+        "x": 789.5999999999999,
+        "y": 506.4
+      },
+      "params": {}
+    },
+    {
+      "id": "picked",
+      "type": "out.table",
+      "position": {
+        "x": 1070,
+        "y": 505
+      },
+      "params": {
+        "pageSize": "100",
+        "filters": [],
+        "showFilters": true
+      },
+      "size": {
+        "width": 522,
+        "height": 341
+      }
+    },
+    {
+      "id": "n27_hc0om",
+      "type": "dataset.ngsource",
+      "position": {
+        "x": 1348.212402025605,
+        "y": -166.57876052001552
+      },
+      "params": {
+        "url": "precomputed://https://spine.itanna.io/files/eric/jfrc_mesh_test",
+        "layerName": "",
+        "layerType": "auto",
+        "segments": "1",
+        "settings": "{\n\"objectAlpha\": 0.24,\n \"meshSilhouetteRendering\": 1.2,\n \"segmentDefaultColor\": \"#ffffff\"\n}"
+      }
+    },
+    {
+      "id": "n1t_6h0ot",
+      "type": "note.text",
+      "position": {
+        "x": 1349.2315860508786,
+        "y": -238.50735564868933
+      },
+      "params": {
+        "text": "Add the neuropil mesh as a separate layer.",
+        "outline": true
+      },
+      "size": {
+        "width": 226,
+        "height": 59
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1u_9t376",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n1t_4n1m5",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e1v_pg2cb",
+      "source": "annotations",
+      "sourceHandle": "out",
+      "target": "combine",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1w_pihrt",
+      "source": "combine",
+      "sourceHandle": "out",
+      "target": "repair",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1x_j5r7y",
+      "source": "tags",
+      "sourceHandle": "annotations",
+      "target": "foldTags",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1y_fy7nh",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "repair",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e1z_awax4",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "tags",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e20_hm13h",
+      "source": "repair",
+      "sourceHandle": "out",
+      "target": "join",
+      "targetHandle": "left"
+    },
+    {
+      "id": "e21_t7v69",
+      "source": "foldTags",
+      "sourceHandle": "out",
+      "target": "join",
+      "targetHandle": "right"
+    },
+    {
+      "id": "e22_x9yjc",
+      "source": "join",
+      "sourceHandle": "out",
+      "target": "dataset",
+      "targetHandle": "annotations"
+    },
+    {
+      "id": "e23_6taak",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "explore",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e24_olrju",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "ngl",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e25_mfgnj",
+      "source": "explore",
+      "sourceHandle": "all",
+      "target": "picked",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e26_mjqqh",
+      "source": "explore",
+      "sourceHandle": "selected",
+      "target": "ngl",
+      "targetHandle": "neurons"
+    },
+    {
+      "id": "e28_2dopw",
+      "source": "n27_hc0om",
+      "sourceHandle": "layers",
+      "target": "ngl",
+      "targetHandle": "layers"
+    }
+  ],
+  "meta": {
+    "name": "FlyWire FAFB",
+    "description": "FlyWire FAFB with the published cell annotations and the community tags wired in as its labels. Search in the Explore Dataset node, tick neurons, then Run.",
+    "modifiedAt": "2026-08-26T19:41:46.948Z"
+  }
+}

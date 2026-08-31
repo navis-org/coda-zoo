@@ -1,0 +1,353 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "dataset",
+      "type": "dataset.malecns",
+      "position": {
+        "x": 70,
+        "y": 90
+      },
+      "params": {
+        "version": "",
+        "refresh": 0,
+        "edgeSetId": "",
+        "edgeSetName": ""
+      }
+    },
+    {
+      "id": "n1t_5qxb8",
+      "type": "dataset.description",
+      "position": {
+        "x": 70,
+        "y": 390
+      },
+      "params": {}
+    },
+    {
+      "id": "picked",
+      "type": "out.table",
+      "position": {
+        "x": 737.5363715198569,
+        "y": 88.98768185759928
+      },
+      "params": {
+        "pageSize": "100",
+        "filters": [],
+        "showFilters": false
+      },
+      "size": {
+        "width": 358,
+        "height": 458
+      }
+    },
+    {
+      "id": "n1z_f1orq",
+      "type": "neuron.findNeurons",
+      "position": {
+        "x": 346.7899019601878,
+        "y": 88.81337119745083
+      },
+      "params": {
+        "filters": [
+          "{\"f\":\"type\",\"op\":\"endsWith\",\"v\":[\"_lPN\"]}"
+        ],
+        "roi": "",
+        "limit": 0,
+        "typePattern": "",
+        "instancePattern": "",
+        "status": "",
+        "minSize": 0
+      }
+    },
+    {
+      "id": "n22_twfib",
+      "type": "out.pie",
+      "position": {
+        "x": 1129.3338514672469,
+        "y": 89.30633498740254
+      },
+      "params": {
+        "category": "type",
+        "value": "",
+        "shape": "donut",
+        "sortSlices": true,
+        "maxSlices": 8,
+        "sliceLabels": "percent",
+        "selection": []
+      }
+    },
+    {
+      "id": "n26_d3jqr",
+      "type": "out.histogram",
+      "position": {
+        "x": 1127.0141068812093,
+        "y": 574.0275466186031
+      },
+      "params": {
+        "value": "size",
+        "binMode": "fixed",
+        "bins": 50,
+        "series": "",
+        "logX": false,
+        "normalize": "count",
+        "cumulative": false,
+        "selection": []
+      },
+      "size": {
+        "width": 420,
+        "height": 496
+      }
+    },
+    {
+      "id": "n28_1w25j",
+      "type": "out.distribution",
+      "position": {
+        "x": 1574.0025030359848,
+        "y": 92.43455444581102
+      },
+      "params": {
+        "value": "downstream",
+        "group": "type",
+        "style": "box",
+        "points": "outliers",
+        "whiskers": "tukey",
+        "logAxis": false,
+        "sortGroups": true,
+        "maxGroups": 24,
+        "selection": []
+      },
+      "size": {
+        "width": 491,
+        "height": 980
+      }
+    },
+    {
+      "id": "n2d_42wbq",
+      "type": "note.text",
+      "position": {
+        "x": 1133.0560434814538,
+        "y": 18.58055653984229
+      },
+      "params": {
+        "text": "Distribution of type within the selected neurons.",
+        "outline": true
+      },
+      "size": {
+        "width": 414,
+        "height": 56
+      }
+    },
+    {
+      "id": "n1t_nbpce",
+      "type": "note.text",
+      "position": {
+        "x": 348.89518855496794,
+        "y": 17.968896305178532
+      },
+      "params": {
+        "text": "Select all neurons with a `*_PN` type.",
+        "outline": true
+      },
+      "size": {
+        "width": 356,
+        "height": 58
+      }
+    },
+    {
+      "id": "n1u_ktke3",
+      "type": "note.text",
+      "position": {
+        "x": 1575.665731391578,
+        "y": 17.379460748345018
+      },
+      "params": {
+        "text": "Number of outgoing connections per type",
+        "outline": true
+      },
+      "size": {
+        "width": 483,
+        "height": 58
+      }
+    },
+    {
+      "id": "n1v_1v9bt",
+      "type": "note.text",
+      "position": {
+        "x": 1129.7751003220546,
+        "y": 1087.9861680610438
+      },
+      "params": {
+        "text": "Histogram of neuron sizes (in voxels).",
+        "outline": true
+      },
+      "size": {
+        "width": 414,
+        "height": 56
+      }
+    },
+    {
+      "id": "n1x_w9e76",
+      "type": "note.text",
+      "position": {
+        "x": 741.895188554968,
+        "y": 15.968896305178532
+      },
+      "params": {
+        "text": "neuPrint gives us a lot of data to work with.",
+        "outline": true
+      },
+      "size": {
+        "width": 356,
+        "height": 58
+      }
+    },
+    {
+      "id": "n1t_3xtov",
+      "type": "out.barChart",
+      "position": {
+        "x": 737.2457472093932,
+        "y": 575.2460358330047
+      },
+      "params": {
+        "category": "type",
+        "value": "post",
+        "series": "",
+        "useSeries": true,
+        "sortBars": true
+      },
+      "size": {
+        "width": 360,
+        "height": 496
+      }
+    },
+    {
+      "id": "n3m_lslw1",
+      "type": "note.text",
+      "position": {
+        "x": 734.1127756833714,
+        "y": 1085.0343252033265
+      },
+      "params": {
+        "text": "Number of inputs per type (sum over individual neurons)",
+        "outline": true
+      },
+      "size": {
+        "width": 360,
+        "height": 56
+      }
+    },
+    {
+      "id": "n3n_vti9a",
+      "type": "out.scatter",
+      "position": {
+        "x": 2087.380748794468,
+        "y": 95.48305456596859
+      },
+      "params": {
+        "x": "pre",
+        "y": "post",
+        "xLog": false,
+        "yLog": false,
+        "aspect": "fit",
+        "pointColorMode": "constant",
+        "pointColorBy": "type",
+        "pointColor": "3",
+        "pointSizeBy": "",
+        "pointSizeMin": 5,
+        "pointSizeMax": 12,
+        "shapeBy": "type",
+        "opacity": 1,
+        "labelBy": "neuronId",
+        "maxPoints": 50000,
+        "trend": "linear",
+        "trendPerGroup": false,
+        "idColumn": "neuronId",
+        "selection": []
+      },
+      "size": {
+        "width": 706,
+        "height": 733
+      }
+    },
+    {
+      "id": "n3p_00038",
+      "type": "note.text",
+      "position": {
+        "x": 2088.65400973793,
+        "y": 16.22910712085561
+      },
+      "params": {
+        "text": "Number of pre vs postsynapses. Each data point is a neuron.",
+        "outline": true
+      },
+      "size": {
+        "width": 698,
+        "height": 61
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1u_a9ygh",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n1t_5qxb8",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e20_kveid",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n1z_f1orq",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e21_jd0u1",
+      "source": "n1z_f1orq",
+      "sourceHandle": "neurons",
+      "target": "picked",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e23_6pj3m",
+      "source": "picked",
+      "sourceHandle": "out",
+      "target": "n22_twfib",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e27_sig2c",
+      "source": "picked",
+      "sourceHandle": "out",
+      "target": "n26_d3jqr",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2c_hv22b",
+      "source": "picked",
+      "sourceHandle": "out",
+      "target": "n28_1w25j",
+      "targetHandle": "in"
+    },
+    {
+      "source": "picked",
+      "sourceHandle": "out",
+      "target": "n1t_3xtov",
+      "targetHandle": "in",
+      "id": "e1t_xo7jx"
+    },
+    {
+      "source": "picked",
+      "sourceHandle": "out",
+      "target": "n3n_vti9a",
+      "targetHandle": "in",
+      "id": "e3o_pdjxh"
+    }
+  ],
+  "meta": {
+    "name": "MaleCNS",
+    "description": "Browsing MaleCNS. Search in the Explore Dataset node, tick neurons, then Run.",
+    "modifiedAt": "2026-08-26T20:25:15.718Z"
+  }
+}

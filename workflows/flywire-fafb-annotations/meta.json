@@ -1,0 +1,20 @@
+{
+  "name": "FlyWire FAFB Full Stack",
+  "summary": "Full-stack analysis pipeline for the public release (v783) of FlyWire FAFB.",
+  "tags": [
+    "fly",
+    "brain",
+    "flywire",
+    "fafb",
+    "annotations"
+  ],
+  "authors": [
+    {
+      "name": "Philipp Schlegel",
+      "github": "schlegelp"
+    }
+  ],
+  "requires": [
+    "cave"
+  ]
+}

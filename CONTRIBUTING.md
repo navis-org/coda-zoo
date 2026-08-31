@@ -1,4 +1,4 @@
-# Depositing a workflow
+# Contributing a workflow
 
 ## 1. Build it in Coda and save it
 

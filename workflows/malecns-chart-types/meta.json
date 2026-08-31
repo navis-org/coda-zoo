@@ -1,0 +1,18 @@
+{
+  "name": "All Chart Types",
+  "summary": "Demonstrates the various chart types available in Coda using MaleCNS data.",
+  "tags": [
+    "fly",
+    "charts",
+    "malecns"
+  ],
+  "authors": [
+    {
+      "name": "Philipp Schlegel",
+      "github": "schlegelp"
+    }
+  ],
+  "requires": [
+    "neuprint"
+  ]
+}

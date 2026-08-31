@@ -1,0 +1,417 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "dataset",
+      "type": "dataset.malecns",
+      "position": {
+        "x": 8.739378067487188,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "version": "",
+        "refresh": 0,
+        "edgeSetId": "",
+        "edgeSetName": ""
+      }
+    },
+    {
+      "id": "n2i_o24td",
+      "type": "neuron.findNeurons",
+      "position": {
+        "x": 293.73937806748717,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "filters": [
+          "{\"f\":\"type\",\"op\":\"matches\",\"v\":[\"DA.*PN\"]}"
+        ],
+        "roi": "",
+        "limit": 0,
+        "typePattern": "",
+        "instancePattern": "",
+        "status": "",
+        "minSize": 0
+      }
+    },
+    {
+      "id": "n1j_7q1l0",
+      "type": "neuron.connectivity",
+      "position": {
+        "x": 689.7393780674872,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "direction": "both",
+        "hops": 1,
+        "minWeight": 1
+      }
+    },
+    {
+      "id": "n1j_mtin0",
+      "type": "neuron.partnerVectors",
+      "position": {
+        "x": 958.7393780674872,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "partnerBy": "type",
+        "untyped": "drop",
+        "weight": "weight",
+        "weighting": "raw"
+      }
+    },
+    {
+      "id": "n1s_6u052",
+      "type": "out.table",
+      "position": {
+        "x": 1229.7393780674872,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "pageSize": "100",
+        "filters": [],
+        "showFilters": false
+      },
+      "size": {
+        "width": 357,
+        "height": 385
+      }
+    },
+    {
+      "id": "n1u_e8ws2",
+      "type": "core.similarity",
+      "position": {
+        "x": 1623.7393780674872,
+        "y": 28.572771650217764
+      },
+      "params": {
+        "layout": "long",
+        "observations": "",
+        "features": "feature",
+        "value": "weight",
+        "idColumn": "",
+        "wideFeatures": [],
+        "metric": "cosine",
+        "output": "similarity"
+      }
+    },
+    {
+      "id": "n1w_yf8r6",
+      "type": "out.heatmap",
+      "position": {
+        "x": 2483,
+        "y": 510
+      },
+      "params": {
+        "scale": "sequential",
+        "showValues": false
+      },
+      "size": {
+        "width": 566,
+        "height": 584
+      }
+    },
+    {
+      "id": "n1y_y6wd7",
+      "type": "cluster.linkage",
+      "position": {
+        "x": 1946,
+        "y": 27
+      },
+      "params": {
+        "method": "ward",
+        "symmetry": "mean",
+        "distance": "auto"
+      }
+    },
+    {
+      "id": "n1l_xf184",
+      "type": "out.dendrogram",
+      "position": {
+        "x": 2483,
+        "y": 27
+      },
+      "params": {
+        "orientation": "down",
+        "showLabels": true,
+        "selection": []
+      }
+    },
+    {
+      "id": "n1n_tn52v",
+      "type": "cluster.cut",
+      "position": {
+        "x": 2215,
+        "y": 27
+      },
+      "params": {
+        "mode": "count",
+        "count": 5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "n2j_ovghg",
+      "type": "cluster.clustersToNeurons",
+      "position": {
+        "x": 3080,
+        "y": 27
+      },
+      "params": {
+        "labelColumn": "label",
+        "matchColumn": "neuronId",
+        "suffix": "_c"
+      }
+    },
+    {
+      "id": "n2m_xncgl",
+      "type": "out.neuroglancer",
+      "position": {
+        "x": 3090.2003056303474,
+        "y": 510
+      },
+      "params": {
+        "segmentColorMode": "categorical",
+        "segmentColorBy": "cluster",
+        "segmentColor": "0",
+        "layout": "3d",
+        "layers": "all",
+        "uiScale": 0.75,
+        "showSlices": false,
+        "limit": 10000,
+        "viewer": "",
+        "viewerType": "auto"
+      },
+      "size": {
+        "width": 694,
+        "height": 586
+      }
+    },
+    {
+      "id": "n2p_tetyu",
+      "type": "out.table",
+      "position": {
+        "x": 3416.0883591518796,
+        "y": 27
+      },
+      "params": {
+        "pageSize": "100",
+        "filters": [],
+        "showFilters": false
+      },
+      "size": {
+        "width": 372,
+        "height": 370
+      }
+    },
+    {
+      "id": "n1m_66dyc",
+      "type": "note.text",
+      "position": {
+        "x": 294.63746714089933,
+        "y": 231.847079502242
+      },
+      "params": {
+        "text": "Define a set of neurons and fetch their in- and outgoing connectivity as edge list.",
+        "outline": true
+      },
+      "size": {
+        "width": 626,
+        "height": 56
+      }
+    },
+    {
+      "id": "n1n_rrqrd",
+      "type": "note.text",
+      "position": {
+        "x": 960.6492278771217,
+        "y": 434.24072735015295
+      },
+      "params": {
+        "text": "The \"Partner Vectors\" node turns the source -> target edge list into a partner vector. We are also aggregating partners by type and discarding connections to untyped neurons (*untyped in this dataset effectively means small fragment*).",
+        "outline": true
+      },
+      "size": {
+        "width": 624,
+        "height": 80
+      }
+    },
+    {
+      "id": "n1o_75oic",
+      "type": "note.text",
+      "position": {
+        "x": 1625.6229164118758,
+        "y": 285.863519290688
+      },
+      "params": {
+        "text": "\"Similarity Matrix\" takes the  partner vectors (effectively a sparse matrix) and calculates a pairwise similarity score (here: cosine) from it.",
+        "outline": true
+      },
+      "size": {
+        "width": 230,
+        "height": 120
+      }
+    },
+    {
+      "id": "ndr_t3na7",
+      "type": "note.text",
+      "position": {
+        "x": 1951.3803898622712,
+        "y": 221.25391140650993
+      },
+      "params": {
+        "text": "Calculate a linkage from the similarity scores, produce 5 clusters from that and visualize the results.",
+        "outline": true
+      },
+      "size": {
+        "width": 492,
+        "height": 63
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e2j_xit6u",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n2i_o24td",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e1k_68x75",
+      "source": "n2i_o24td",
+      "sourceHandle": "neurons",
+      "target": "n1j_7q1l0",
+      "targetHandle": "neurons"
+    },
+    {
+      "id": "e1l_uvhdb",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n1j_7q1l0",
+      "targetHandle": "dataset"
+    },
+    {
+      "id": "e1l_mdht4",
+      "source": "n1j_7q1l0",
+      "sourceHandle": "connections",
+      "target": "n1j_mtin0",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1t_80z2g",
+      "source": "n1j_mtin0",
+      "sourceHandle": "out",
+      "target": "n1s_6u052",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1v_y2ol7",
+      "source": "n1s_6u052",
+      "sourceHandle": "out",
+      "target": "n1u_e8ws2",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2q_8hzij",
+      "source": "n1u_e8ws2",
+      "sourceHandle": "matrix",
+      "target": "n1y_y6wd7",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e1j_rtyk0",
+      "source": "n1y_y6wd7",
+      "sourceHandle": "ordered",
+      "target": "n1w_yf8r6",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2h_yi7k9",
+      "source": "n1y_y6wd7",
+      "sourceHandle": "tree",
+      "target": "n1n_tn52v",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2i_7djqn",
+      "source": "n1n_tn52v",
+      "sourceHandle": "tree",
+      "target": "n1l_xf184",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2k_zquxo",
+      "source": "n1n_tn52v",
+      "sourceHandle": "clusters",
+      "target": "n2j_ovghg",
+      "targetHandle": "labels"
+    },
+    {
+      "id": "e2l_ply33",
+      "source": "n2i_o24td",
+      "sourceHandle": "neurons",
+      "target": "n2j_ovghg",
+      "targetHandle": "neurons"
+    },
+    {
+      "id": "e2q_p2g0r",
+      "source": "n2j_ovghg",
+      "sourceHandle": "neurons",
+      "target": "n2p_tetyu",
+      "targetHandle": "in"
+    },
+    {
+      "id": "e2r_p3vnt",
+      "source": "n2p_tetyu",
+      "sourceHandle": "out",
+      "target": "n2m_xncgl",
+      "targetHandle": "neurons"
+    },
+    {
+      "id": "e2s_cafgg",
+      "source": "dataset",
+      "sourceHandle": "dataset",
+      "target": "n2m_xncgl",
+      "targetHandle": "dataset"
+    }
+  ],
+  "groups": [
+    {
+      "id": "gap_bjym8",
+      "nodeIds": [
+        "n1w_yf8r6",
+        "n1y_y6wd7",
+        "n1l_xf184",
+        "n1n_tn52v",
+        "n2j_ovghg",
+        "n2m_xncgl",
+        "n2p_tetyu"
+      ],
+      "title": "Explore results",
+      "color": "orange"
+    },
+    {
+      "id": "gaq_lgeqk",
+      "nodeIds": [
+        "dataset",
+        "n2i_o24td",
+        "n1j_7q1l0",
+        "n1j_mtin0",
+        "n1s_6u052",
+        "n1u_e8ws2",
+        "n1m_66dyc",
+        "n1n_rrqrd",
+        "n1o_75oic"
+      ],
+      "title": "Calculate similariy",
+      "color": "blue"
+    }
+  ],
+  "meta": {
+    "name": "connectivity_similarity",
+    "description": "Browsing MaleCNS. Search in the Explore Dataset node, tick neurons, then Run.",
+    "modifiedAt": "2026-08-27T09:46:50.838Z"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Connectivity Similarity",
+  "summary": "Shows how to calculate neuron connectivity similarity. Uses MaleCNS data.",
+  "tags": [
+    "fly",
+    "connectivity-similarity",
+    "cosine-similarity",
+    "clustering",
+    "malecns"
+  ],
+  "authors": [
+    {
+      "name": "Philipp Schlegel",
+      "github": "schlegelp"
+    }
+  ],
+  "requires": [
+    "neuprint"
+  ]
+}
