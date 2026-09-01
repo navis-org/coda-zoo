@@ -1,6 +1,6 @@
 # The Coda Zoo
 
-Workflows for [Coda](https://navis-org.github.io/coda/), deposited by the people who use it.
+Workflows for [Coda](https://github.com/navis-org/coda), deposited by the people who use it.
 
 Open Coda and pick **Examples ▸ Browse Workflows…** to search this repository from inside the
 app; clicking an entry loads it onto the canvas. Nothing here needs to be downloaded by hand.
