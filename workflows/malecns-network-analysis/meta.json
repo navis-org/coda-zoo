@@ -1,0 +1,19 @@
+{
+  "name": "Network Analysis",
+  "summary": "Demonstrates basic network analysis using MaleCNS data.",
+  "tags": [
+    "fly",
+    "network-analysis",
+    "connectivity",
+    "malecns"
+  ],
+  "authors": [
+    {
+      "name": "Philipp Schlegel",
+      "github": "schlegelp"
+    }
+  ],
+  "requires": [
+    "neuprint"
+  ]
+}
